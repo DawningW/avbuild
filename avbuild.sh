@@ -876,14 +876,15 @@ setup_android_env() {
   local ANDROID_TOOLCHAIN_PREFIX="${ANDROID_ARCH}-linux-android"
   local CROSS_PREFIX=${ANDROID_TOOLCHAIN_PREFIX}-
   local FFARCH=$ANDROID_ARCH
-  local API_LEVEL=${2#android}
+  # local API_LEVEL=${2#android}
+  local API_LEVEL=24
   local NDK_VER=`grep Pkg.Revision $NDK_ROOT/source.properties |cut -d ' ' -f 3 |cut -d '.' -f 1`
-  [ -z "$API_LEVEL" ] && {
-    API_LEVEL=14
-    [ $NDK_VER -gt 17 ] && API_LEVEL=16
-    [ $NDK_VER -gt 23 ] && API_LEVEL=19
-    [ $NDK_VER -gt 25 ] && API_LEVEL=21  # TODO: always neon
-  }
+  # [ -z "$API_LEVEL" ] && {
+  #   API_LEVEL=14
+  #   [ $NDK_VER -gt 17 ] && API_LEVEL=16
+  #   [ $NDK_VER -gt 23 ] && API_LEVEL=19
+  #   [ $NDK_VER -gt 25 ] && API_LEVEL=21  # TODO: always neon
+  # }
   local UNIFIED_SYSROOT="$NDK_ROOT/sysroot"
   [ -d "$UNIFIED_SYSROOT" ] || UNIFIED_SYSROOT=
   add_elf_flags
